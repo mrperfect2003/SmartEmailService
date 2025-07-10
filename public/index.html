@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SmartEmailService Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border: 2px solid #4facfe;
+      outline: none;
+    }
+
+    button {
+      background: #4facfe;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #00c3fe;
+    }
+
+    h3 {
+      margin-top: 30px;
+      color: #333;
+    }
+
+    pre {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      max-height: 300px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📧 SmartEmailService Demo</h1>
+    <form id="emailForm">
+      <label>To:</label>
+      <input type="email" id="to" required />
+
+      <label>Subject:</label>
+      <input type="text" id="subject" required />
+
+      <label>Body:</label>
+      <textarea id="body" rows="5" required></textarea>
+
+      <label>Sender:</label>
+      <input type="email" id="sender" required />
+
+      <label>Idempotency Key:</label>
+      <input type="text" id="idempotencyKey" required />
+
+      <button type="submit">🚀 Send Email</button>
+    </form>
+
+    <h3>📄 Response:</h3>
+    <pre id="response">Response will appear here...</pre>
+  </div>
+
+  <script>
+    const form = document.getElementById("emailForm");
+    const responseBox = document.getElementById("response");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const to = document.getElementById("to").value;
+      const subject = document.getElementById("subject").value;
+      const body = document.getElementById("body").value;
+      const sender = document.getElementById("sender").value;
+      const idempotencyKey = document.getElementById("idempotencyKey").value;
+
+      responseBox.textContent = "Sending... Please wait.";
+
+      const res = await fetch("/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ to, subject, body, sender, idempotencyKey }),
+      });
+
+      const data = await res.json();
+      responseBox.textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
