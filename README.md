@@ -49,7 +49,7 @@ SmartEmailService/
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/YOUR-USERNAME/SmartEmailService.git
+git clone [https://github.com/YOUR-USERNAME/SmartEmailService.git](https://github.com/mrperfect2003/SmartEmailService.git)
 
 # 2. Navigate to the project
 cd SmartEmailService
@@ -140,6 +140,13 @@ npm run test
 * Rate limit: max 5 emails per sender per minute.
 
 ---
+
+## Project:
+ Language: JavaScript
+ Runtime: Node.js
+ Test framework: Jest (JavaScript)
+
+ ---
 
 ##  Author
 
