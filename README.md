@@ -9,7 +9,7 @@ A resilient Node.js email API with **retry logic**, **fallback providers**, **ci
 
 ---
 
-## 🚀 Features
+##  Features
 Retry mechanism with **exponential backoff**  
 Automatic fallback to a secondary provider on failure  
 Circuit breaker pattern to handle repeated failures  
