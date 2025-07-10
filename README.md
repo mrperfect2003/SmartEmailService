@@ -71,10 +71,10 @@ Server runs by default at: **[http://localhost:3000/](http://localhost:3000/)**
 
   ```json
   {
-    "to": "abc@example.com",
+    "to": "keshav854104@gmail.com",
     "subject": "Hello",
     "body": "This is the body",
-    "sender": "sender@example.com",
+    "sender": "perfectkeshavraj@gmail.com",
     "idempotencyKey": "unique-key-123"
   }
   ```
